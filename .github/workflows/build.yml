@@ -1,0 +1,5 @@
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    uses: zmkfirmware/zmk/.github/workflows/user-build-call.yml@main
+    secrets: inherit
