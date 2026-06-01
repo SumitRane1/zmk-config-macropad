@@ -9,9 +9,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Fix git credentials         # ← ADD THIS STEP
+      - name: Configure git credentials      # ← ADD THIS
         run: |
           git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          git config --global credential.helper ""
 
       - name: West Init
         run: west init -l config
@@ -19,5 +20,5 @@ jobs:
       - name: West Update
         run: west update
 
-      - name: West Build
+      - name: West Build (macropad)
         run: west build ...
