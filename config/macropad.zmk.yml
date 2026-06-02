@@ -1,0 +1,11 @@
+file_format: "1"
+id: macropad
+name: MacroPad
+type: shield
+url: ""
+requires:
+  - nice_nano
+features:
+  - keys
+siblings:
+  - macropad
