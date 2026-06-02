@@ -10,11 +10,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Fix git credentials for west update   # ← THIS IS THE FIX
-        run: |
-          git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
-          git config --global credential.helper ""
-
       - name: West Init
         run: west init -l config
 
@@ -25,4 +20,10 @@ jobs:
         run: west zephyr-export
 
       - name: West Build
-        run: west build -s zmk/app -b nice_nano_v2 -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" -DSHIELD="macropad"
+        run: west build -s zmk/app -b "nice_nano//zmk" -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" -DSHIELD="macropad"
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v3
+        with:
+          name: macropad-firmware
+          path: build/zephyr/zmk.uf2
