@@ -1,28 +1,20 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/media.h>
+#include <dt-bindings/zmk/consumer.h>
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            // Layer 0 — Default Shortcuts
-            // [ Ctrl+Z ] [ Ctrl+C ] [ Ctrl+V ]
-            // [ Ctrl+S ] [ Ctrl+P ] [ Alt+F4 ]
-            // [ Vol Dn ] [ Vol Up ] [ Mute   ]
             bindings = <
-                &kp LC(Z)   &kp LC(C)   &kp LC(V)
-                &kp LC(S)   &kp LC(P)   &kp LA(F4)
+                &kp LC(Z)     &kp LC(C)     &kp LC(V)
+                &kp LC(S)     &kp LC(P)     &kp LA(F4)
                 &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE
             >;
         };
 
         fn_layer {
-            // Layer 1 — Media / System
-            // [ Play/Pause ] [ Prev      ] [ Next      ]
-            // [ Screenshot ] [ Win+L     ] [ Ctrl+Z    ]
-            // [ BRI_DN     ] [ BRI_UP    ] [ Trans     ]
             bindings = <
                 &kp C_PP       &kp C_PREV     &kp C_NEXT
                 &kp LG(LS(S))  &kp LG(L)      &kp LC(Z)
