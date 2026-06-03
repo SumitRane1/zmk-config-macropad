@@ -45,6 +45,6 @@
         compatible = "zmk,kscan-sideband-behaviors";
         kscan = <&kscan1>;
         auto-enable;
-        bindings = <&tg 1>;
+        bindings = <&tog 1>;
     };
 };
