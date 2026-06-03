@@ -45,6 +45,11 @@
         compatible = "zmk,kscan-sideband-behaviors";
         kscan = <&kscan1>;
         auto-enable;
-        bindings = <&tog 1>;
+
+        fn_key: fn_key {
+            row = <0>;
+            column = <0>;
+            bindings = <&tog 1>;
+        };
     };
 };
