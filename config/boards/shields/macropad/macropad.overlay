@@ -2,22 +2,23 @@
 
 / {
     chosen {
-        zmk,kscan = &kscan0;
+        zmk,kscan = &kscan_composite;
         zmk,matrix-transform = &default_transform;
     };
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <3>;
-        rows = <3>;
+        rows = <4>;
         map = <
             RC(0,0) RC(0,1) RC(0,2)
             RC(1,0) RC(1,1) RC(1,2)
             RC(2,0) RC(2,1) RC(2,2)
+            RC(3,0)
         >;
     };
 
-    kscan0: kscan_0 {
+    kscan0: kscan_matrix {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "row2col";
 
@@ -34,22 +35,25 @@
             ;
     };
 
-    kscan1: kscan_1 {
+    kscan1: kscan_direct {
         compatible = "zmk,kscan-gpio-direct";
         input-gpios
             = <&gpio1 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
     };
 
-    kscan_sideband: kscan_sideband {
-        compatible = "zmk,kscan-sideband-behaviors";
-        kscan = <&kscan1>;
-        auto-enable;
+    kscan_composite: kscan_composite {
+        compatible = "zmk,kscan-composite";
+        rows = <4>;
+        columns = <3>;
 
-        fn_key: fn_key {
-            row = <0>;
-            column = <0>;
-            bindings = <&tog 1>;
+        matrix {
+            kscan = <&kscan0>;
+        };
+
+        direct {
+            kscan = <&kscan1>;
+            row-offset = <3>;
         };
     };
 };
