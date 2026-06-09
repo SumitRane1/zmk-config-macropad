@@ -16,17 +16,15 @@ jobs:
           name: firmware
           path: firmware/
 
-      - name: List files
-        run: find firmware/ -type f
-
-      - name: Repack artifact without compression
+      - name: Repack without compression
         run: |
           cd firmware
-          zip -0 -r ../firmware-store.zip .
+          zip -0 -r ../firmware-stored.zip .
+          echo "Files in ZIP:"
+          unzip -l ../firmware-stored.zip
 
-      - name: Upload uncompressed firmware
+      - name: Upload stored firmware
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
-          path: firmware-store.zip
-          overwrite: true
+          name: firmware-stored
+          path: firmware-stored.zip
