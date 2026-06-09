@@ -24,3 +24,4 @@ jobs:
         with:
           name: firmware-stored
           path: firmware/*.uf2
+          compression-level: 0   # Store only — no Deflate compression
