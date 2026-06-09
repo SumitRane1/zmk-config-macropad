@@ -5,3 +5,25 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+
+  repack:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download firmware artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: firmware
+          path: firmware/
+
+      - name: Repack artifact without compression
+        run: |
+          cd firmware
+          zip -0 ../firmware-uncompressed.zip *.uf2
+
+      - name: Upload uncompressed firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: firmware-uncompressed.zip
+          overwrite: true
