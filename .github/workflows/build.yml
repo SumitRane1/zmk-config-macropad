@@ -16,15 +16,11 @@ jobs:
           name: firmware
           path: firmware/
 
-      - name: Repack without compression
-        run: |
-          cd firmware
-          zip -0 -r ../firmware-stored.zip .
-          echo "Files in ZIP:"
-          unzip -l ../firmware-stored.zip
+      - name: Show files
+        run: find firmware/ -type f -name "*.uf2"
 
-      - name: Upload stored firmware
+      - name: Upload raw uf2
         uses: actions/upload-artifact@v4
         with:
           name: firmware-stored
-          path: firmware-stored.zip
+          path: firmware/*.uf2
