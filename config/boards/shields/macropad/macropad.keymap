@@ -6,48 +6,14 @@
         compatible = "zmk,keymap";
 
         layer_0 {
-            label = "LAYER 0";
+            label = "TEST";
             bindings = <
-                &kp LC(Z)     &kp LC(C)     &kp LC(V)
-                &kp LC(S)     &kp LC(P)     &kp LA(F4)
-                &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE
-                &tog 1        &trans
+                &kp N1  &kp N2  &kp N3
+                &kp N4  &kp N5  &kp N6
+                &kp N7  &kp N8  &kp N9
+                &kp A   &kp B
             >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
         };
-
-        layer_1 {
-            label = "LAYER 1";
-            bindings = <
-                &trans  &trans  &trans
-                &trans  &trans  &trans
-                &trans  &trans  &trans
-                &tog 1  &trans
-            >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-        };
-
-        layer_2 {
-            label = "LAYER 2";
-            bindings = <
-                &trans  &trans  &trans
-                &trans  &trans  &trans
-                &trans  &trans  &trans
-                &to 0   &trans
-            >;
-            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
-        };
-
-        layer_3 {
-            label = "LAYER 3";
-            bindings = <
-                &trans  &trans  &trans
-                &trans  &trans  &trans
-                &trans  &trans  &trans
-                &to 0   &trans
-            >;
-            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
-        };
-
     };
 };
