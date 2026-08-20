@@ -14,7 +14,7 @@
             RC(0,0) RC(0,1) RC(0,2)
             RC(1,0) RC(1,1) RC(1,2)
             RC(2,0) RC(2,1) RC(2,2)
-            RC(3,0)
+            RC(3,0) RC(3,1)
         >;
     };
 
@@ -39,6 +39,7 @@
         compatible = "zmk,kscan-gpio-direct";
         input-gpios
             = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio0 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
     };
 
