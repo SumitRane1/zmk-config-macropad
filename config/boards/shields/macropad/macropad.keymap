@@ -27,10 +27,10 @@
         layer_1 {
             label = "FN";
             bindings = <
-                &trans  &trans  &trans
-                &trans  &trans  &trans
-                &trans  &trans  &trans
-                &tog 1  &trans
+                &kp LC(LS(Z)) &kp LC(X)     &kp LC(A)
+                &kp LC(N)     &kp LC(O)     &kp LC(W)
+                &kp C_BRI_UP  &kp C_BRI_DN  &kp C_PP
+                &tog 1        &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
         };
