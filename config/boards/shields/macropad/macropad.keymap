@@ -2,51 +2,59 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    macros {
+        volume_to_brightness: volume_to_brightness {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&tog 2>, <&tog 3>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         layer_0 {
-            label = "LAYER 0";
+            label = "BASE";
             bindings = <
                 &kp LC(Z)     &kp LC(C)     &kp LC(V)
                 &kp LC(S)     &kp LC(P)     &kp LA(F4)
                 &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE
-                &tog 1        &trans
+                &tog 1        &tog 2
             >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
         };
 
         layer_1 {
-            label = "LAYER 1";
+            label = "FN";
             bindings = <
                 &trans  &trans  &trans
                 &trans  &trans  &trans
                 &trans  &trans  &trans
                 &tog 1  &trans
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
         };
 
         layer_2 {
-            label = "LAYER 2";
+            label = "MODE_VOLUME";
             bindings = <
                 &trans  &trans  &trans
                 &trans  &trans  &trans
                 &trans  &trans  &trans
-                &to 0   &trans
+                &trans  &volume_to_brightness
             >;
-            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         layer_3 {
-            label = "LAYER 3";
+            label = "MODE_BRIGHTNESS";
             bindings = <
                 &trans  &trans  &trans
                 &trans  &trans  &trans
                 &trans  &trans  &trans
-                &to 0   &trans
+                &trans  &tog 3
             >;
-            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
         };
 
     };
